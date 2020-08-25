@@ -13,7 +13,6 @@ const Input: React.FC<InputProps> = ({name, icon: Icon, ...rest}) => {
     const inputRef = useRef<HTMLInputElement>(null);
     const [isFocused, setIsFocused] = useState(false);
     const [isFilled, setIsFilled] = useState(false);
-    const [isErrored, setIsErrored] = useState(false);
     const {fieldName, error, registerField} = useField(name);
 
     const handleInputFocus = useCallback(() => {
@@ -43,7 +42,7 @@ const Input: React.FC<InputProps> = ({name, icon: Icon, ...rest}) => {
                 {...rest} 
             /> 
             {error && (
-                <Error>
+                <Error title={error}>
                     <FiAlertCircle color="#c53030" size={20} />
                 </Error>
             )}

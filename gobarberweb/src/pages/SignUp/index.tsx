@@ -3,7 +3,7 @@ import { FiMail, FiUser, FiLock, FiArrowLeft } from 'react-icons/fi';
 import { FormHandles } from "@unform/core";
 import { Form } from "@unform/web";
 import * as Yup from "yup";
-import getValidationErrors from '../../utils/getValidationErrors'
+import getValidationErrors from '../../utils/getValidationErrors';
 
 import logoImg from '../../assets/logo.svg';
 
