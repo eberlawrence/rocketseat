@@ -1,0 +1,19 @@
+{
+  "cidades": [
+    {
+      "id": 1,
+      "nomeCidade": "Uberlândia",
+      "nomeEstado": "Minas Gerais"
+    },
+    {
+      "nomeCidade": "Goiânias",
+      "nomeEstado": "Goiás",
+      "id": 2
+    },
+    {
+      "nomeCidade": "São Paulo",
+      "nomeEstado": "São Paulo",
+      "id": 6
+    }
+  ]
+}
