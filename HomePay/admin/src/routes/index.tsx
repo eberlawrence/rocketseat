@@ -1,0 +1,15 @@
+import React from "react";
+import { Switch } from "react-router-dom";
+import Route from "./Route";
+import Dashboard from "../pages/Dashboard/Dashboard";
+import LogIn from "../pages/LogIn/LogIn";
+
+const Routes: React.FC = () => (
+  <Switch>
+    <Route path="/login" component={LogIn} layout="auth" />
+    <Route path="/" exact component={Dashboard} />
+    <Route path="/dashboard" component={Dashboard} />
+  </Switch>
+);
+
+export default Routes;
