@@ -1,0 +1,159 @@
+// Variables
+@import "./template/variables";
+@import "./template/bootstrap/variables";
+
+// Mixins
+@import "./template/mixins";
+@import "./template/bootstrap/mixins";
+
+// Bootsrap
+@import "../../node_modules/bootstrap/scss/functions";
+@import "../../node_modules/bootstrap/scss/variables";
+@import "../../node_modules/bootstrap/scss/mixins";
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.c-chat-sidebar {
+  width: 30vw;
+  max-width: 600px;
+  min-width: 350px;
+}
+
+.c-chat-header {
+  background-color: #fff;
+  // position: absolute;
+  // top: 0;
+  // left: 0;
+  // right: 0;
+  height: 55px;
+  border-bottom: 1px solid $border-color;
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+
+  @include media-breakpoint-up(xl) {
+    right: 290px;
+    padding: 0 25px;
+  }
+
+  .nav-link {
+    color: $color-text-03;
+    font-size: 11px;
+    font-weight: $font-weight-medium;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 0;
+
+    @include hover-focus() {
+      color: darken($color-text-03, 20%);
+    }
+
+    &.active {
+      color: $color-brand-01;
+      font-weight: $font-weight-semibold;
+      position: relative;
+
+      &::before {
+        content: "";
+        position: absolute;
+        bottom: -19px;
+        left: 0;
+        width: 100%;
+        border-bottom: 1px solid $color-brand-01;
+      }
+    }
+
+    + .nav-link {
+      margin-left: 30px;
+    }
+
+    span {
+      display: none;
+      @include media-breakpoint-up(sm) {
+        display: inline;
+      }
+    }
+  }
+}
+
+.form-error {
+  display: block;
+  color: #c53030;
+  margin-top: 8px;
+}
+
+/* Style the accordion section */
+.accordion__section {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Style the buttons that are used to open and close the accordion panel */
+.accordion {
+  background-color: white;
+  color: #444;
+  cursor: pointer;
+  padding: 18px;
+  display: flex;
+  align-items: center;
+  border: none;
+  outline: none;
+  transition: background-color 0.6s ease;
+}
+
+/* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
+.accordion:hover,
+.actived {
+  background-color: #ccc;
+}
+
+/* Style the accordion content title */
+.accordion__title {
+  font-family: "Open Sans", sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  text-align: left;
+}
+
+/* Style the accordion chevron icon */
+.accordion__icon {
+  margin-left: auto;
+  transition: transform 0.6s ease;
+}
+
+/* Style to rotate icon when state is active */
+.rotate {
+  transform: rotate(90deg);
+}
+
+/* Style the accordion content panel. Note: hidden by default */
+.accordion__content {
+  // background-color: white;
+  overflow: auto;
+  transition: max-height 0.6s ease;
+}
+
+/* Style the accordion content text */
+.accordion__text {
+  font-family: "Open Sans", sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  padding: 18px;
+}
+
+.blink {
+  animation: blink 2s steps(5, start) infinite;
+  -webkit-animation: blink 1s steps(5, start) infinite;
+}
+@keyframes blink {
+  to {
+    visibility: hidden;
+  }
+}
+@-webkit-keyframes blink {
+  to {
+    visibility: hidden;
+  }
+}

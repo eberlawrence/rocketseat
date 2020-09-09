@@ -24,6 +24,7 @@ interface JwtProps {
 interface IAuthContext {
   signIn(credentials: SignInCredentials): Promise<void>;
   signOut(): void;
+  hasValidJWT(): string;
   data: AuthState;
   signed: boolean;
 }
@@ -44,6 +45,18 @@ export const AuthProvider: React.FC = ({ children }) => {
     }
     return false;
   }, []);
+
+  const hasValidJWT = useCallback((): string => {
+    const token = localStorage.getItem("token");
+    if (token && isValidJWT(token)) {
+      const decoded: JwtProps = jwt(token);
+      const currentTime = new Date().getTime() / 1000;
+      if (currentTime < decoded.exp) {
+        return token;
+      }
+    }
+    return "";
+  }, [isValidJWT]);
 
   const [data, setData] = useState<AuthState>(() => {
     const token = localStorage.getItem("token");
@@ -77,7 +90,7 @@ export const AuthProvider: React.FC = ({ children }) => {
     setData({} as AuthState);
   }, []);
 
-  return <AuthContext.Provider value={{ signIn, signOut, data, signed }}>{children}</AuthContext.Provider>;
+  return <AuthContext.Provider value={{ signIn, signOut, hasValidJWT, data, signed }}>{children}</AuthContext.Provider>;
 };
 
 export function useAuth(): IAuthContext {
